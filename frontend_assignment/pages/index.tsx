@@ -6,8 +6,18 @@ import Head from "next/head"
 import React from "react"
 import styles from "../styles/Home.module.css"
 
+//import {useForm, SubmitHandler} from "react-hook-form";
+
+/*
+type Inputs ={
+    example: string,
+    exampleRequired: string,
+}
+*/
+
 export default function Home() {
     const [logs, setLogs] = React.useState("Connect your wallet and greet!")
+
 
     async function greet() {
         setLogs("Creating your Semaphore identity...")
@@ -18,7 +28,7 @@ export default function Home() {
 
         const ethersProvider = new providers.Web3Provider(provider)
         const signer = ethersProvider.getSigner()
-        const message = await signer.signMessage("Sign this message to create your identity!")
+        const message = await signer.signMessage("Signn this message to create your identity!")
 
         const identity = new ZkIdentity(Strategy.MESSAGE, message)
         const identityCommitment = identity.genIdentityCommitment()
@@ -75,8 +85,9 @@ export default function Home() {
                 <div className={styles.logs}>{logs}</div>
 
                 <div onClick={() => greet()} className={styles.button}>
-                    Greet
-                </div>
+                    Greet Say Hooray 
+                    </div>
+
             </main>
         </div>
     )
